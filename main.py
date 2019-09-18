@@ -63,7 +63,7 @@ terrible_movies = [
     "Nine Lives",
     "Starship Troopers"
 ]
-it_sucks = "<p>You don't want to see that movie, it's bad.</p>"
+it_sucks = "You don't want to see that movie, it's bad."
 
 @app.route("/crossoff", methods=['POST'])
 def crossoff_movie():
@@ -101,9 +101,8 @@ def add_movie():
         return redirect("/?error="+errormsg)
     # TODO 
     # if the user wants to add a terrible movie, redirect and tell them not to add it b/c it sucks
-    #for movie in terrible_movies:
-        #if new_movie == terrible_movies(movie)
-        #return redirect('/'+it_sucks)
+    if new_movie in terrible_movies:
+        return redirect('/?error='+it_sucks)
 
     # build response content
     new_movie_element = "<strong>" + new_movie + "</strong>"
